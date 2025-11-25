@@ -1,9 +1,7 @@
-Repository: https://github.com/a-zeb/e-commerce-system
+## Reflection
 
-Write a reflection of roughly 300 words addressing:
+Building this small e-commerce system was a hands-on way to practice TypeScript and basic front-end OOP design. I started by defining a ProductData interface to describe the API response shape and used strict typing throughout the models and services. The Product class wraps that data with readonly props and exposes getters for every field, ensuring consumers cannot accidentally mutate the underlying state. Business rules, such as calculating discounts, live alongside the data via methods like getPriceWithDiscount(), keeping logic close to the model. This encapsulation kept DOM rendering code separate from the internal structure, and the compiler enforced that separation with private fields, typed return values, and no-implicit-any protections.
 
-How you implemented TypeScript features and OOP principles.
+One challenge was moving from console-driven output to a browser UI without leaking internal model details. Initially the view code reached into private props and used repeated innerHTML strings, which was brittle. Adding explicit getters and rendering with createElement helped: the UI now depends only on the public API, and TypeScript can catch mistakes early. Another hurdle was understanding module output for the browser versus Node; keeping "module": "nodenext" with ESM imports required serving the compiled dist/main.js and using type="module" in the HTML. Aligning paths and running a local server resolved those issues. I also had to remember that DOM globals do not exist in Node, so browser-only code needs to run in the browser or be guarded in tests.
 
-The challenges you encountered and how you overcame them.
-
-How you handled asynchronous operations and error management.
+Asynchronous flows are centered in loadProducts, which fetches data from the API service and maps each item into a Product. The API client returns typed promises so the compiler can track the resolved shapes. I used async/await for readability and wrapped the call in try/catch to handle failures. Errors are delegated to a shared handleError helper, keeping concerns separated and avoiding duplicated logging. Tax and discount calculations remain synchronous utilities, but they are invoked inside the async pipeline once the data resolves. Overall, TypeScript’s strict mode plus small, well-scoped helpers made the async code easy to reason about and the error paths explicit.
