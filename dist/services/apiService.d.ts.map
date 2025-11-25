@@ -1,0 +1,1 @@
+{"version":3,"file":"apiService.d.ts","sourceRoot":"","sources":["../../src/services/apiService.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,KAAK,WAAW,EAAE,MAAM,sBAAsB,CAAC;AAgCxD,wBAAsB,YAAY,CAAC,EAAE,EAAE,MAAM,GAAG,OAAO,CAAC,WAAW,CAAC,CAEnE;AAED,wBAAsB,aAAa,CAAC,KAAK,SAAI,GAAG,OAAO,CAAC,WAAW,EAAE,CAAC,CAGrE"}
