@@ -1,3 +1,5 @@
+Deployed at: https://a-zeb.github.io/e-commerce-system/
+
 ## Reflection
 
 Building this small e-commerce system was a hands-on way to practice TypeScript and basic front-end OOP design. I started by defining a ProductData interface to describe the API response shape and used strict typing throughout the models and services. The Product class wraps that data with readonly props and exposes getters for every field, ensuring consumers cannot accidentally mutate the underlying state. Business rules, such as calculating discounts, live alongside the data via methods like getPriceWithDiscount(), keeping logic close to the model. This encapsulation kept DOM rendering code separate from the internal structure, and the compiler enforced that separation with private fields, typed return values, and no-implicit-any protections.
