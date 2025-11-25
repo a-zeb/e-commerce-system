@@ -19,8 +19,16 @@ export interface ProductData {
 export class Product {
     constructor(private readonly props: ProductData) { }
 
-    get category(): string {
-        return this.props.category;
+    get id(): number {
+        return this.props.id;
+    }
+
+    get title(): string {
+        return this.props.title;
+    }
+
+    get description(): string {
+        return this.props.description;
     }
 
     get price(): number {
@@ -31,22 +39,42 @@ export class Product {
         return this.props.discountPercentage;
     }
 
-    get title(): string {
-        return this.props.title;
+    get rating(): number {
+        return this.props.rating;
+    }
+
+    get stock(): number {
+        return this.props.stock;
+    }
+
+    get brand(): string {
+        return this.props.brand;
+    }
+
+    get category(): string {
+        return this.props.category;
+    }
+
+    get thumbnail(): string {
+        return this.props.thumbnail;
+    }
+
+    get images(): string[] {
+        return this.props.images;
     }
 
     // Include methods displayDetails() and getPriceWithDiscount(), 
     // and implement them appropriately based on the provided data.
     displayDetails(): void {
-        console.log(`\nProduct: ${this.props.title}`);
-        console.log(`Category: ${this.props.category} | Brand: ${this.props.brand}`);
-        console.log(`Base Price: $${this.props.price.toFixed(2)} | Rating: ${this.props.rating}`);
-        console.log(`Description: ${this.props.description}`);
+        console.log(`\nProduct: ${this.title}`);
+        console.log(`Category: ${this.category} | Brand: ${this.brand}`);
+        console.log(`Base Price: $${this.price.toFixed(2)} | Rating: ${this.rating}`);
+        console.log(`Description: ${this.description}\n`);
     }
 
     getPriceWithDiscount(): number {
-        const discountAmount = calculateDiscount(this.props.price, this.props.discountPercentage);
-        const discountedPrice = this.props.price - discountAmount;
+        const discountAmount = calculateDiscount(this.price, this.discountPercentage);
+        const discountedPrice = this.price - discountAmount;
         return Number(discountedPrice.toFixed(2));
     }
 }

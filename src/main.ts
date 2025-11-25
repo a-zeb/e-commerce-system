@@ -15,6 +15,27 @@ const renderProduct = (product: Product): void => {
     console.log(`Discounted Price: $${discountedPrice.toFixed(2)} (after ${product.discountPercentage}% off)`);
     console.log(`Tax: $${taxAmount.toFixed(2)}`);
     console.log(`Final Total: $${finalTotal}`);
+
+    document.body.innerHTML += `
+        <div style="border:1px solid #ccc; padding:10px; margin:10px;">
+            <h2>${product.title}</h2>
+            <p><strong>Discounted Price:</strong> $${discountedPrice.toFixed(2)} (after ${product.discountPercentage}% off)</p>
+            <p><strong>Tax:</strong> $${taxAmount.toFixed(2)}</p>
+            <p><strong>Final Total:</strong> $${finalTotal}</p>
+        </div>
+    `;
+
+    //     document.body.innerHTML += `
+    //         <div style="border:1px solid #ccc; padding:10px; margin:10px;">
+    //             <h2>${product.title}</h2>
+    //             <p>Category: ${product.category} | Brand: ${product.props.brand}</p>
+    //             <p>Base Price: $${product.price.toFixed(2)} | Rating: ${product.props.rating}</p>
+    //             <p>Description: ${product.props.description}</p>
+    //             <p><strong>Discounted Price:</strong> $${discountedPrice.toFixed(2)} (after ${product.discountPercentage}% off)</p>
+    //             <p><strong>Tax:</strong> $${taxAmount.toFixed(2)}</p>
+    //             <p><strong>Final Total:</strong> $${finalTotal}</p>
+    //         </div>
+    //     `;
 };
 
 // Use asynchronous functions to fetch product data and display it.
